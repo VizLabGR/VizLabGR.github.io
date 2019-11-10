@@ -475,15 +475,16 @@ $(function(){
         itemSelector: '.filtr-item',
       });
     });
-    
-    $('#work-list li a.filter').on( 'click', function(e) {
 
+
+    $('#work-list li a.filter').on( 'click', function(e) {
+        console.log(this);
         // Prevent the default link behavior 
         e.preventDefault();
         
         var target = $(this),
             filterValue = target.data('filter');
-
+        console.log(filterValue);
         filterizd.isotope({ filter: filterValue });
 
         // return if already current
@@ -496,6 +497,12 @@ $(function(){
 
     });
 
+  }
+ setTimeout(showOnlyActive,200);
+
+  function showOnlyActive(){
+    $(".filter-active").click();
+    console.log("hiding");
   }
 
 
