@@ -496,7 +496,7 @@ $(function(){
     });
 
   }
- setTimeout(showOnlyActive,100);
+ setTimeout(showOnlyActive,1000);
 
   function showOnlyActive(){
     $(".filter-active").click();
