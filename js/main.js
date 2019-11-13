@@ -524,11 +524,7 @@ $(function(){
         console.log("All images loaded")
         setTimeout(showOnlyActive,1000);
     }
-
-
   });
-
-
 
   function showOnlyActive(){
     $(".filter-active").click();
