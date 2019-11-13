@@ -496,7 +496,39 @@ $(function(){
     });
 
   }
- setTimeout(showOnlyActive,1000);
+
+  $( document ).ready(function(){
+    // Images loaded are 0 because we are going to process a new set of images.
+    var images_Loaded = 0;
+    // Total images is still the total number is <img> elements on the page.
+    var total_images = $('img').length;
+    console.log(total_images);
+
+    // Step through every element if the DOM, clone it, attach an onload events
+    // listener, then set its source to the source of the original image.
+    // When that new image has loaded, fire the imageLoaded() callback.
+        
+    $('img').each(function(idx,img){
+        $('<img>').on('load',imageLoaded).attr('src', $(img).attr('src'));
+    });
+
+    // Increment total count untill all images are loaded.
+    function imageLoaded(){
+        images_Loaded++;
+        if ( images_Loaded == total_images ){
+            allImagesLoaded();
+        }
+    }
+    
+    function allImagesLoaded(){
+        console.log("All images loaded")
+        setTimeout(showOnlyActive,1000);
+    }
+
+
+  });
+
+
 
   function showOnlyActive(){
     $(".filter-active").click();
